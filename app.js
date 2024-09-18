@@ -1,27 +1,28 @@
-require('dotenv').config();
 
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const Blog = require("./models/blog");
+const cors = require("cors");
 
 const userRoute = require("./routes/user");
 const blogRoute = require("./routes/blog");
 const { checkForAuthenticationCookie } = require("./middleware/authentication");
 
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect("mongodb+srv://rohangupta30128:@Shiv231@cluster0.bxket.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => console.log("MongoDb connected Successfully"))
   .catch((err) => console.log("Error on MongoDb", err));
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = 3001;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie());
 app.use(express.static(path.resolve("./public")));
+app.use(cors())
 
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));
