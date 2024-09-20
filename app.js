@@ -11,7 +11,7 @@ const blogRoute = require("./routes/blog");
 const { checkForAuthenticationCookie } = require("./middleware/authentication");
 
 mongoose
-  .connect("mongodb+srv://rohangupta30128:@Shiv231@cluster0.bxket.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+  .connect("mongodb+srv://himanshukotwani898:OQs42xtqgAXOh6rV@cluster0.2qwjb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(() => console.log("MongoDb connected Successfully"))
   .catch((err) => console.log("Error on MongoDb", err));
 
